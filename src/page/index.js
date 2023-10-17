@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import './page.css'
 export default function Page(){
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -15,7 +15,7 @@ export default function Page(){
                 description,
                 progress
             });
-            setTasks(newTasks);
+            newTasks = setTasks(newTasks);
             setTitle("");
             setDescription("");
             setProgress("not started");
@@ -34,12 +34,31 @@ export default function Page(){
         setProgress(e.target.value)
     }
 
+    function getStyleName(progress){
+        if (progress === "not started"){
+            return 'notstarted'
+        }
+
+        if (progress === "in progress"){
+            return 'inprogress'
+        }
+
+        if (progress === "finished"){
+            return 'finished'
+        }
+    }
+
     const list = tasks.map(task =>
-        <div >
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <p>{task.progress}</p>
-        </div>
+        {
+            let styleName = getStyleName(task.progress);
+            return (
+                <div className={styleName}>
+                    <h3>{task.title}</h3>
+                    <p>{task.description}</p>
+                    <p>{task.progress}</p>
+                 </div>
+            )
+        }
     )
 
     return (

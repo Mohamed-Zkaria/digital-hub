@@ -1,0 +1,16 @@
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.notstarted{
+    color: crimson;
+}
+
+.inprogress{
+    color: darkslategrey;
+}
+
+.finished{
+    color: darkolivegreen;
+}
