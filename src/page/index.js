@@ -48,15 +48,26 @@ export default function Page(){
         }
     }
 
-    const list = tasks.map(task =>
+    function handleDeleteTask({target:{dataset:{index}}}){
+        let targetIndex = parseInt(index);
+        let newTasks = tasks.filter((targetIndex,index)=>{
+            console.log(targetIndex!== index)
+            return targetIndex == index;
+        });
+        console.log(newTasks);
+        setTasks(newTasks);
+    }
+
+    const list = tasks.map((task, index) =>
         {
             let styleName = getStyleName(task.progress);
             return (
-                <div className={styleName}>
+                <div key={index}className={styleName}>
                     <h3>{task.title}</h3>
                     <p>{task.description}</p>
                     <p>{task.progress}</p>
-                 </div>
+                    <button data-index={index} onClick={handleDeleteTask}>Delete</button>
+                </div>
             )
         }
     )
