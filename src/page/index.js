@@ -16,6 +16,9 @@ export default function Page(){
                 progress
             });
             setTasks(newTasks);
+            setTitle("");
+            setDescription("");
+            setProgress("not started");
         }
     }
 
@@ -28,7 +31,7 @@ export default function Page(){
     }
 
     function handleProgressChange(e){
-        setProgress(e.target.text)
+        setProgress(e.target.value)
     }
 
     const list = tasks.map(task =>
