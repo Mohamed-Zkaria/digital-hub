@@ -48,11 +48,10 @@ export default function Page(){
         }
     }
 
-    function handleDeleteTask({target:{dataset:{index}}}){
-        let targetIndex = parseInt(index);
-        let newTasks = tasks.filter((targetIndex,index)=>{
-            console.log(targetIndex!== index)
-            return targetIndex == index;
+    function handleDeleteTask(e){
+        let targetIndex = e.target.dataset.index
+        let newTasks = tasks.filter((row,index)=>{
+            return targetIndex !== index;
         });
         console.log(newTasks);
         setTasks(newTasks);
